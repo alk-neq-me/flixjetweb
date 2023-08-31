@@ -17,7 +17,7 @@ function Movie(props: MovieProps) {
   } = props;
 
   return (
-    <div className='p-12'>
+    <div className='py-12 px-6 flex flex-col gap-10'>
       <div className="flex flex-col">
         <div className="flex flex-row items-center justify-start gap-5">
           <div className="w-[120px]">

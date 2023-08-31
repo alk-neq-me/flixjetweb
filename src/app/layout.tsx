@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import Provider from '@/components/Provider'
+import Navbar from '@/components/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn('bg-white text-slate-900 antialiased', inter.className)}>
       <body className="bg-background min-h-screen pt-12 antialiased">
+        <Navbar/>
         <Provider>
           <div className='container max-w-7xl mx-auto h-full pt-12'>
             {children}

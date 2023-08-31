@@ -32,9 +32,9 @@ function ListMovies() {
   if (isLoading) return <h1>Loading...</h1>
   if (isError) return <h1>Error...</h1>
 
-  return <div className="px-4 space-y-8">
+  return <div className="sm:px-2 md:px-4 space-y-8">
     {data?.pages?.map((movies, index) => (
-      <div key={index} className="grid grid-cols-4 gap-4">
+      <div key={index} className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 sm:gap-2">
         {movies.data?.map(movie => (
           <Poster key={`${movie.id}`} uri={movie.poster_path} tmdbid={movie.id.toString()} />
         ))}
