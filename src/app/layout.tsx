@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import Provider from '@/components/Provider'
 import Navbar from '@/components/Navbar'
+// import SlideBar from '@/components/Slidebar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,9 +22,10 @@ export default function RootLayout({
   children: React.ReactNode,
 }) {
   return (
-    <html lang="en" className={cn('bg-white text-slate-900 antialiased', inter.className)}>
-      <body className="bg-background min-h-screen pt-12 antialiased">
-        <Navbar/>
+    <html lang="en" className={cn('text-slate-900 antialiased dark', inter.className)}>
+      <body className="min-h-screen antialiased flex flex-row">
+        <Navbar />
+        {/* <SlideBar /> */}
         <Provider>
           <div className='container max-w-7xl mx-auto h-full pt-12'>
             {children}

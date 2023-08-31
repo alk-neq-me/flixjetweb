@@ -28,8 +28,8 @@ function Page() {
   if (isError) return <h1>Error: <pre>{JSON.stringify(error)}</pre></h1>
 
   return (
-    <div className="h-full mx-auto">
-      <Link href="/" className={cn(buttonVariants({variant: "ghost"}), "self-start -mt-20")}>
+    <div className="h-full mx-auto pt-12">
+      <Link href="/" className={cn(buttonVariants({variant: "ghost"}), "text-zinc-100 hover:text-zinc-900 self-start -mt-20")}>
         <ChevronLeft className="mr-2 h-4 w-4" />
       </Link>
 
