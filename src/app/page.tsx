@@ -7,8 +7,7 @@ import { dehydrate } from "@tanstack/react-query";
 export default async function Home() {
   const queryClient = getQueryClient();
   await queryClient.prefetchInfiniteQuery(["pupular-movies"], ({pageParam}) => fetchPopularMovies(pageParam), {
-    getNextPageParam: lastPage => lastPage.length ?? false,
-    getPreviousPageParam: firstPage => firstPage.length ?? false
+    getNextPageParam: lastPage => lastPage.nextPage
   });
   const dehydratedState = dehydrate(queryClient)
 

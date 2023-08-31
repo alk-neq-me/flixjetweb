@@ -9,7 +9,7 @@ import { ChevronLeft } from "lucide-react";
 import { cn } from '@/lib/utils'
 import Movie from "@/components/Movie/Movie";
 
-function page() {
+function Page() {
   const params = useSearchParams()
   const tmdbid = params.get("tmdbid");
 
@@ -42,4 +42,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
