@@ -33,14 +33,17 @@ export async function fetchDetails(tmdbid: string | null): Promise<Movie> {
 
 export async function fetchPopularMovies(
   page = 1,
-): Promise<Movie[]> {
-  console.log(page)
+): Promise<{data: Movie[], nextPage: number | undefined}> {
   try {
     const url = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}&api_key=${TOKEN}`;
     const res = await axios.get(url);
 
-    const data = res.data;
-    return data.results
+    const data = res.data.results;
+    const hasNext = page * 2 <= parseInt(data.length)
+    return {
+      data,
+      nextPage: hasNext ? page + 1 : undefined
+    }
   } catch (error) {
     console.error('Error fetching details:', error);
     throw error;

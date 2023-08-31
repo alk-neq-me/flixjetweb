@@ -9,12 +9,12 @@ function ListMovies() {
   const {
     data,
     fetchNextPage,
-    isLoading
+    isLoading,
+    isError
   } = useInfiniteQuery({
     queryKey: ["pupular-movies"],
     queryFn: ({pageParam = 1}) => fetchPopularMovies(pageParam),
-    getNextPageParam: lastPage => lastPage.length ?? false,
-    getPreviousPageParam: firstPage => firstPage.length ?? false
+    getNextPageParam: lastPage => lastPage.nextPage,
   });
 
   const handleScroll = useCallback(() => {
@@ -22,17 +22,20 @@ function ListMovies() {
       return;
     }
     fetchNextPage();
-  }, [])
+  }, [fetchNextPage])
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isLoading])
 
+  if (isLoading) return <h1>Loading...</h1>
+  if (isError) return <h1>Error...</h1>
+
   return <div className="px-4 space-y-8">
     {data?.pages?.map((movies, index) => (
       <div key={index} className="grid grid-cols-4 gap-4">
-        {movies.map(movie => (
+        {movies.data?.map(movie => (
           <Poster key={`${movie.id}`} uri={movie.poster_path} tmdbid={movie.id.toString()} />
         ))}
       </div>
