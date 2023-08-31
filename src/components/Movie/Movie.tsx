@@ -36,7 +36,7 @@ function Movie(props: MovieProps) {
         </div>
       </div>
 
-      <div className="mt-3">
+      <div className="my-3">
         <p>{overview}</p>
       </div>
     </div>
