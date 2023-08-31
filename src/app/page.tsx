@@ -1,12 +1,18 @@
-import { Button } from "@/components/ui/Button";
+import ListMovies from "@/components/Movies/ListMovies";
+import getQueryClient from "@/lib/get_query_client";
+import Hydrate from "@/lib/hydrate.client";
+import { fetchPopularMovies } from "@/lib/movies";
+import { dehydrate } from "@tanstack/react-query";
 
-export default function Home() {
-  return (
-    <div className="absolute inset-0 h-full flex flex-col items-center justify-center">
-      <div className="flex flex-col gap-5 mx-auto items-center">
-        <h1 className="text-2xl">Hello, World</h1>
-        <Button text="Click!" />
-      </div>
-    </div>
-  )
+export default async function Home() {
+  const queryClient = getQueryClient();
+  await queryClient.prefetchInfiniteQuery(["pupular-movies"], ({pageParam}) => fetchPopularMovies(pageParam), {
+    getNextPageParam: lastPage => lastPage.length ?? false,
+    getPreviousPageParam: firstPage => firstPage.length ?? false
+  });
+  const dehydratedState = dehydrate(queryClient)
+
+  return <Hydrate state={dehydratedState}>
+    <ListMovies />
+  </Hydrate>
 }
