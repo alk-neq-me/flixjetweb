@@ -30,15 +30,13 @@ function ListMovies() {
   }, [isLoading])
 
   return <div className="px-4 space-y-8">
-    <div className="grid grid-cols-4 gap-4">
-      {data?.pages?.map(movies => (
-        <>
-          {movies.map(movie => (
-            <Poster key={`${movie.id}`} uri={movie.poster_path} />
-          ))}
-        </>
-      ))}
-    </div>
+    {data?.pages?.map((movies, index) => (
+      <div key={index} className="grid grid-cols-4 gap-4">
+        {movies.map(movie => (
+          <Poster key={`${movie.id}`} uri={movie.poster_path} tmdbid={movie.id.toString()} />
+        ))}
+      </div>
+    ))}
   </div>
 }
 

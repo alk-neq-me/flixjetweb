@@ -1,4 +1,4 @@
-import ListMovies from "@/components/Movies/ListMovies";
+import ListMovies from "@/components/Movie/MovieList";
 import getQueryClient from "@/lib/get_query_client";
 import Hydrate from "@/lib/hydrate.client";
 import { fetchPopularMovies } from "@/lib/movies";
