@@ -24,7 +24,7 @@ function Movie(props: MovieProps) {
             <Poster uri={poster_path} tmdbid={id.toString()} />
           </div>
           <div className="flex flex-col gap-2">
-            <h1 className="text-2xl">{title}</h1>
+            <h1 className="text-xl sm:text-2xl">{title}</h1>
             <p className="text-zinc-500 text-sm">{release_date}</p>
             <p className="text-zinc-500 text-sm">Adult | {adult ? "18+" : "Not"}</p>
             <p className="text-zinc-500 text-sm">Rating | {vote_average}</p>

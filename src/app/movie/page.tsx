@@ -28,16 +28,12 @@ function Page() {
   if (isError) return <h1>Error: <pre>{JSON.stringify(error)}</pre></h1>
 
   return (
-    <div className="h-full mx-auto pt-12">
+    <div className="flex mx-auto w-full lg:w-[750px] flex-col justify-center pt-[120px]">
       <Link href="/" className={cn(buttonVariants({variant: "ghost"}), "text-zinc-100 hover:text-zinc-900 self-start -mt-20")}>
         <ChevronLeft className="mr-2 h-4 w-4" />
       </Link>
 
       <Movie {...data} />
-
-      <div className="fixed inset-x-0 bottom-0 p-12">
-        <Button className="w-full">Download App</Button>
-      </div>
     </div>
   )
 }

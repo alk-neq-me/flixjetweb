@@ -21,7 +21,7 @@ function ListMovies() {
   if (isError) return <h1>Error...</h1>
 
   return <div className="sm:px-2 md:px-4 pt-12">
-    <h1 className="text-2xl sm:text-3xl leading-tight font-bold">Treading</h1>
+    <h1 className="text-2xl sm:text-3xl leading-tight">Treading</h1>
     {data?.pages?.map((movies, index) => (
       <InfiniteScroll 
         key={index} 

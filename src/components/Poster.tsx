@@ -1,4 +1,5 @@
 import { useRouter } from "next/navigation";
+import Image from 'next/image'
 
 interface PosterProps {
   uri: string
@@ -15,11 +16,11 @@ function Poster(props: PosterProps) {
     onClick={(event) => {
       event.preventDefault()
       router.push(`/movie?tmdbid=${tmdbid}`)
-    }} className="p-3 h-full">
+    }} className="cursor-pointer p-3 h-full min-w-[120px]">
     <img 
       src={poster_path} 
       alt="poster" 
-      className="cursor-pointer object-contain shadow-xl rounded-lg"
+      className="object-contain shadow-xl rounded-lg"
     />
   </div>
 }
